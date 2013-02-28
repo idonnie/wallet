@@ -1,0 +1,25 @@
+<configuration>
+
+  <property resource="logback.properties" />
+
+  <appender name="R" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <File>/Users/idonnie-user/work/wallet/log/wallet.log</File>
+    <encoder>
+      <pattern>[%t] [%4p] [%d{ISO8601}] %c{1}: %m%n</pattern>
+    </encoder>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>/Users/idonnie-user/work/wallet/log/wallet.log.%d{yyyy-MM-dd-HH}</fileNamePattern>
+    </rollingPolicy>
+  </appender>
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%msg%n</pattern>
+    </encoder>
+  </appender>
+  <logger name="wallet-logger" level="DEBUG"/>
+  <root level="DEBUG">
+    <appender-ref ref="R" />
+    <appender-ref ref="STDOUT" />
+  </root>
+</configuration>
